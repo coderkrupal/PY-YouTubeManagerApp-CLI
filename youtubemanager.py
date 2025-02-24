@@ -1,3 +1,6 @@
+import json
+
+
 RED = "\33[91m"
 BLUE = "\33[94m"
 GREEN = "\033[32m"
@@ -24,12 +27,30 @@ def banner():
     print(font)
 
 
+def load_data():
+    try:
+        with open("youtube.txt", "r") as file:
+            return json.load(file)
+    except FileNotFoundError:
+        return []
+
+
+def save_data_helper(vedios):
+    with open("youtube.txt", "w") as file:
+        json.dump(vedios, file)
+
+
 def list_all_vedios(vedios):
-   pass
+    for index, val in enumerate(vedios):
+        print(f"{index}.")
+        print(f"{val}")
 
 
 def add_youtube_vedio(vedios):
-    pass
+    nameV = input("enter a name of vedio")
+    time = input("enter a timing of vedio")
+    vedios.append({"name": nameV, "time": time})
+    save_data_helper(vedios)
 
 
 def update_youtube_vedio(vedios):
@@ -44,23 +65,30 @@ def exit_app():
     pass
 
 
-vedios = []
-while True:
-    banner()
-    print("1.list al youtube vedios")
-    print("2.Add a  youtube video")
-    print("3.Update a youtube vedio details")
-    print("4.Delete a youtube vedio")
-    print("5.exit the app")
-    choice = input("enter your choice")
-    match choice:
-        case "1":
-            list_all_vedios(vedios)
-        case "2":
-            add_youtube_vedio(vedios)
-        case "3":
-            update_youtube_vedio(vedios)
-        case "4":
-            delete_youtube_vedio(vedios)
-        case "5":
-            exit_app()
+def main():
+    vedios = load_data()
+    while True:
+        banner()
+        print("1.list al youtube vedios")
+        print("2.Add a  youtube video")
+        print("3.Update a youtube vedio details")
+        print("4.Delete a youtube vedio")
+        print("5.exit the app")
+        choice = int(input("enter your choice"))
+        match choice:
+            case 1:
+                list_all_vedios(vedios)
+            case 2:
+                add_youtube_vedio(vedios)
+            case 3:
+                update_youtube_vedio(vedios)
+            case 4:
+                delete_youtube_vedio(vedios)
+            case 5:
+                break
+            case _:
+                print("invalid choice")
+
+
+if __name__ == "__main__":
+    main()
