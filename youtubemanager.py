@@ -41,7 +41,9 @@ def save_data_helper(vedios):
 
 
 def list_all_vedios(vedios):
+    print("####################################################")
     for index, val in enumerate(vedios):
+
         print(f"{index}.")
         print(f"{val}")
 
@@ -54,12 +56,24 @@ def add_youtube_vedio(vedios):
 
 
 def update_youtube_vedio(vedios):
-    pass
+    list_all_vedios(vedios)
+    index = int(input("enter the vedio to update"))
+    if 1 <= index <= len(vedios):
+        name = input("enter a new name of vedio")
+        time = input("enter new time of vedio")
+        vedios[index - 1] = {"name": name, "time": time}
+        print("updated vedio and time:")
+        print(vedios)
 
 
 def delete_youtube_vedio(vedios):
-    pass
-
+     list_all_vedios(vedios)
+     index = int(input("enter the vedio to delete"))
+     if 1 <= index <= len(vedios):
+         del vedios[index -1]
+         save_data_helper(vedios)
+     else:
+        print("invalid syntax is selected")
 
 def exit_app():
     pass

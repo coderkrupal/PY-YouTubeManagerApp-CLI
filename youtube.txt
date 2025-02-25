@@ -1,1 +1,1 @@
-[{"name": " chai aur code", "time": " 50 min"}, {"name": " chai aur code", "time": " 50 mins"}, {"name": " java with telsuk", "time": "  60 mins"}]
+[{"name": " chai aur code", "time": " 50 min"}, {"name": " chai aur code", "time": " 50 mins"}, {"name": " java with telsuk", "time": "  60 mins"}, {"name": " python with mosh", "time": " 60 mins"}, {"name": " kartoon", "time": " 69 mins"}]
